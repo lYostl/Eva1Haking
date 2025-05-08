@@ -1,0 +1,13 @@
+version: '3.9'
+
+services:
+  security_api:
+    build: .
+    container_name: security_api_container
+    ports:
+      - "8010:8000"
+    volumes:
+      - .:/app
+      - ./data_test:/app/data_test
+    env_file:
+      - .env
