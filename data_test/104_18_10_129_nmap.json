@@ -1,0 +1,51 @@
+{
+    "target": "104.18.10.129",
+    "scanned_at": "2025-05-10T05:41:05.565739",
+    "nmap": [
+        {
+            "ip": "104.18.10.129",
+            "ports": [
+                {
+                    "port": "80",
+                    "protocol": "tcp",
+                    "state": "open",
+                    "service": {
+                        "name": "http",
+                        "product": "Cloudflare http proxy",
+                        "version": ""
+                    }
+                },
+                {
+                    "port": "443",
+                    "protocol": "tcp",
+                    "state": "open",
+                    "service": {
+                        "name": "https",
+                        "product": "cloudflare",
+                        "version": ""
+                    }
+                },
+                {
+                    "port": "8080",
+                    "protocol": "tcp",
+                    "state": "open",
+                    "service": {
+                        "name": "http",
+                        "product": "Cloudflare http proxy",
+                        "version": ""
+                    }
+                },
+                {
+                    "port": "8443",
+                    "protocol": "tcp",
+                    "state": "open",
+                    "service": {
+                        "name": "https-alt",
+                        "product": "cloudflare",
+                        "version": ""
+                    }
+                }
+            ]
+        }
+    ]
+}

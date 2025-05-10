@@ -1,0 +1,43 @@
+{
+    "domain": "jumbo.cl",
+    "resolved_at": "2025-05-10T05:25:13.375519",
+    "records": {
+        "A": [
+            "75.2.53.146"
+        ],
+        "AAAA": [],
+        "CNAME": [],
+        "MX": [
+            "10 jumbo-cl.mail.protection.outlook.com."
+        ],
+        "NS": [
+            "ns02.cencosud.com.co.",
+            "ns02.cencosud.com.br.",
+            "a12-66.akam.net.",
+            "a28-64.akam.net.",
+            "a10-64.akam.net.",
+            "ns03.cencosud.com.ar.",
+            "ns02.cencosud.com.ar.",
+            "a11-65.akam.net.",
+            "a13-67.akam.net.",
+            "ns02.cencosud.cl.",
+            "ns01.cencosud.cl.",
+            "a1-25.akam.net."
+        ],
+        "SOA": [
+            "ns01.cencosud.cl. hostmaster.jumbo.cl. 2025041700 3600 900 1209600 600"
+        ],
+        "TXT": [
+            "\"9TCQwOqoxoBHJLvKaQ+XS9SwsK/uJVvLupMn93QM3gVW/3ASToObuqYy9OSfRwkOl1LNb0MsK7X+FA9bgxCsyQ==\"",
+            "\"v=spf1 include:spf.cencosud.com ip4:200.1.131.85 ip4:200.6.120.8 ip4:200.6.120.5 ip4:200.6.98.8 mx include:spf.masterbase.com include:spf.protection.outlook.com include:smtp.vtexcrm.com.br include:amazonses.com -all\"",
+            "\"onetrust-domain-verification=164ec14514ff47b1867fe6614c0e8b1b\"",
+            "\"atlassian-domain-verification=b3SRmR4cwn/xmjJIRPycLSQQ6NGclrEEax6FlG0SOg30JuJb9XM5rBYNDf2vwHzZ\"",
+            "\"google-site-verification=eYDNlrO3JVi07yBFgHAzbDxs-9Ozsqe6u2K8m_kuc3A\"",
+            "\"EeYsS+rUMYFD6Yz8xgI8yIwBTc8H754fQeDgWdRpCDW1HzP4neRclp0bN7XQ7uixFEGCgb9Uosvvy0WKBnw1Sw==\"",
+            "\"L1zWriFWiucRXqXYFa0wQy7rbF2aqhLJ4HVmakWfzfZG+6ZjvsPeiyU82T72Esl951AfYEW4ty0r2UdZ3JXiNA==\"",
+            "\"cx843976txd4nlnsyzpk3m7dtt7bjhl1\"",
+            "\"atlassian-domain-verification=9ZhVkb9ZDbIgosnSFDnPs9ZXXT2eDNnAzDCE8dluq42R4gVWrla8hg/TPrKIAmps\"",
+            "\"MS=ms87253753\""
+        ]
+    }
+}

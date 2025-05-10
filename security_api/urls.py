@@ -8,15 +8,14 @@ schema_view = get_schema_view(
     openapi.Info(
         title="Security API",
         default_version='v1',
-        description="API para escaneos de seguridad: DNS, WHOIS, Nmap y Google Dorks",
+        description="API para escaneos de seguridad",
     ),
     public=True,
     permission_classes=(AllowAny,),
 )
 
+
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('api/', include('api.urls')),
-    path('swagger/', schema_view.with_ui('swagger', cache_timeout=0), name='schema-swagger-ui'),
+    path('api/', include('api.urls')),  # <- Esta línea es clave
 ]
-

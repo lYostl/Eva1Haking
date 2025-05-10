@@ -1,0 +1,27 @@
+{
+    "domain": "google.com\n",
+    "scanned_at": "2025-05-10T03:09:00.948868",
+    "records": {
+        "A": [
+            "Error: The DNS query name does not exist: google.com\\010."
+        ],
+        "AAAA": [
+            "Error: The DNS query name does not exist: google.com\\010."
+        ],
+        "CNAME": [
+            "Error: The DNS query name does not exist: google.com\\010."
+        ],
+        "MX": [
+            "Error: The DNS query name does not exist: google.com\\010."
+        ],
+        "NS": [
+            "Error: The DNS query name does not exist: google.com\\010."
+        ],
+        "SOA": [
+            "Error: The DNS query name does not exist: google.com\\010."
+        ],
+        "TXT": [
+            "Error: The DNS query name does not exist: google.com\\010."
+        ]
+    }
+}

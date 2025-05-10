@@ -5,34 +5,39 @@ import whois
 import subprocess
 import dns.resolver
 from core.infrastructure.scanners.dns_scan import DNSScanner
+from core.infrastructure.scanners.google_dorks import perform_google_search
+from core.infrastructure.scanners.whois_scan import WhoisScanner
+from core.infrastructure.scanners.nmap_scan import NmapScanner
+import os
+from dotenv import load_dotenv
 
+load_dotenv()
 
-# DORKS
-def google_dorks(request):
-    dorks = [
-        'inurl:"admin/login"',
-        'intitle:"index of"',
-        'filetype:sql "password"',
-        'site:.cl ext:sql'
-    ]
-    return JsonResponse({"dorks": dorks})
+class GoogleDorkSearchView(APIView):
+    def post(self, request):
+        query = request.data.get("query")
+        if not query:
+            return Response({"error": "No query provided"}, status=400)
 
+        api_key = os.getenv("API_KEY")
+        search_engine_id = os.getenv("SEARCH_ENGINE_ID")
+
+        if not api_key or not search_engine_id:
+            return Response({"error": "Missing API_KEY or SEARCH_ENGINE_ID"}, status=500)
+
+        results = perform_google_search(api_key, search_engine_id, query)
+        return Response({"results": results})
 
 # WHOIS
-def whois_lookup(request):
-    try:
-        domain = request.GET.get("domain", "")
-        info = whois.whois(domain)
-        return JsonResponse({
-            "domain_name": info.domain_name,
-            "registrar": info.registrar,
-            "creation_date": str(info.creation_date),
-            "expiration_date": str(info.expiration_date),
-            "name_servers": info.name_servers,
-        })
-    except Exception as e:
-        return JsonResponse({"error": str(e)}, status=400)
+class WhoisScanView(APIView):
+    def post(self, request):
+        domain = request.data.get("domain")
+        if not domain:
+            return Response({"error": "No domain provided"}, status=400)
 
+        scanner = WhoisScanner(domain)
+        data = scanner.run_scan()
+        return Response(data)
 
 # DNS
 def dns_lookup(request):
@@ -50,24 +55,21 @@ def dns_lookup(request):
         return JsonResponse({"error": str(e)}, status=400)
 
 
-# NMAP
-def nmap_scan(request):
-    target = request.GET.get("target", "")
-    if not target:
-        return JsonResponse({"error": "No target provided"}, status=400)
+class NmapScanView(APIView):
+    def post(self, request):
+        target = request.data.get("target")
+        if not target:
+            return Response({"error": "No target provided"}, status=400)
 
-    try:
-        result = subprocess.run(["nmap", "-T4", "-F", target], capture_output=True, text=True)
-        return JsonResponse({"scan": result.stdout})
-    except Exception as e:
-        return JsonResponse({"error": str(e)}, status=500)
+        scanner = NmapScanner(target)
+        data = scanner.run_scan()
+        return Response(data)
 
 
 
-# DNS SCAN CLASS 
 class DNSScanView(APIView):
-    def get(self, request):
-        domain = request.query_params.get("domain")
+    def post(self, request):
+        domain = request.data.get("domain")
         if not domain:
             return Response({"error": "No domain provided"}, status=400)
         scanner = DNSScanner(domain)

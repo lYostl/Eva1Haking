@@ -5,7 +5,7 @@ import json
 
 class WhoisScanner:
     def __init__(self, domain):
-        self.domain = domain
+        self.domain = domain.strip()
 
     def run_scan(self):
         try:

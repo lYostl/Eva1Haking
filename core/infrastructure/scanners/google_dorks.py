@@ -1,40 +1,70 @@
+import os
 import requests
-from datetime import datetime
-from pathlib import Path
-import json
+from requests.exceptions import RequestException, ConnectionError, Timeout
+from dotenv import load_dotenv
+import logging
+from typing import Optional, List, Dict
 
-class GoogleDorksScanner:
-    def __init__(self, api_key, search_engine_id):
-        self.api_key = api_key
-        self.search_engine_id = search_engine_id
-        self.url = "https://www.googleapis.com/customsearch/v1"
+# configuración LOG
+logging.basicConfig(
+    format='%(asctime)s - %(levelname)s - %(message)s',
+    level=logging.INFO,
+    datefmt='%Y-%m-%d %H:%M:%S'
+)
 
-    def search(self, query):
-        params = {
-            "key": self.api_key,
-            "cx": self.search_engine_id,
-            "q": query
-        }
+def load_env() -> Optional[Dict[str, str]]:
+    load_dotenv()
+    api_key = os.getenv("API_KEY")
+    search_engine_id = os.getenv("SEARCH_ENGINE_ID")
 
-        try:
-            response = requests.get(self.url, params=params, timeout=10)
-            response.raise_for_status()
-            data = response.json()
-            items = data.get("items", [])
-        except Exception as e:
-            items = [{"error": str(e)}]
+    # Mostrar en consola
+    logging.info(f"🔐 API_KEY: {api_key}")
+    logging.info(f"🔎 SEARCH_ENGINE_ID: {search_engine_id}")
 
-        results = {
-            "query": query,
-            "searched_at": datetime.utcnow().isoformat(),
-            "results": items
-        }
+    if not api_key or not search_engine_id:
+        logging.error("❌ API_KEY o SEARCH_ENGINE_ID no encontradas.")
+        return None
+    return {
+        'api_key': api_key,
+        'search_engine_id': search_engine_id
+    }
 
-        Path("data_test").mkdir(exist_ok=True)
-        filename = query.replace(" ", "_").replace(":", "") + "_dorks.json"
-        path = Path("data_test") / filename
 
-        with open(path, "w", encoding="utf-8") as f:
-            json.dump(results, f, indent=4)
+def perform_google_search(api_key: str, search_engine_id: str, query: str, start: int = 1, lang: str = 'lang_es') -> Optional[List[Dict]]:
+    base_url = "https://www.googleapis.com/customsearch/v1"
+    params = {
+        'key': api_key,
+        'cx': search_engine_id,
+        'q': query,
+        'start': start,
+        'lr': lang
+    }
 
-        return results
+    try:
+        response = requests.get(base_url, params=params, timeout=10)
+        
+        logging.info(f"📤 URL enviada: {response.url}")
+        logging.info(f"📥 Status Code: {response.status_code}")
+        
+        response.raise_for_status()  # esto lanza error si no es 200
+        
+        data = response.json()
+
+        if 'items' not in data:
+            logging.warning("⚠️ No se encontraron resultados en la respuesta.")
+            logging.debug(f"Respuesta completa: {data}")
+
+        return data.get('items', [])
+        
+    except ConnectionError:
+        logging.error("🔌 Error de conexión.")
+    except Timeout:
+        logging.error("⏱️ Timeout alcanzado.")
+    except RequestException as e:
+        logging.error(f"❗ RequestException: {e}")
+        if e.response is not None:
+            logging.error(f"📄 Detalle del error: {e.response.text}")
+    except Exception as e:
+        logging.error(f"🔥 Error inesperado: {e}")
+
+    return None

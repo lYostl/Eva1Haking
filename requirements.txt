@@ -3,3 +3,5 @@ djangorestframework
 dnspython
 python-whois
 drf-yasg
+requests
+python-dotenv

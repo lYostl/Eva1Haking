@@ -1,0 +1,44 @@
+{
+    "domain": "lider.cl",
+    "resolved_at": "2025-05-10T05:22:07.298209",
+    "records": {
+        "A": [
+            "104.18.10.129",
+            "104.18.11.129"
+        ],
+        "AAAA": [
+            "2606:4700::6812:a81",
+            "2606:4700::6812:b81"
+        ],
+        "CNAME": [],
+        "MX": [
+            "0 _dc-mx.95dd074e2931.lider.cl."
+        ],
+        "NS": [
+            "connie.ns.cloudflare.com.",
+            "west.ns.cloudflare.com."
+        ],
+        "SOA": [
+            "connie.ns.cloudflare.com. dns.cloudflare.com. 2371866601 10000 2400 604800 1800"
+        ],
+        "TXT": [
+            "\"google-site-verification=D_6AKqko_NjEDC6e5XSHIUcy9QzKIVIZ4_l0Qnc6E6U\"",
+            "\"jhn8krp09ggjp6vmndmzcbsq4lmszdk4\"",
+            "\"_globalsign-domain-verification=bB-NKOi50UWpdHZHmNgmx-oWtXw2sD1NTWJREExRdf\"",
+            "\"_globalsign-domain-verification=6x0EdxpT3Yxc7WUizl2Oao_QC4zFxUwBkmKpUwykQJ\"",
+            "\"google-site-verification=7ITS0T0u13e0cpCBpaSzB7Sj1P9uxGlxCfloLqS5Onw\"",
+            "\"_globalsign-domain-verification=qguVhddOap6m2aCfy-Ql42QIMWe57E2QGh8j2KnHQe\"",
+            "\"v=spf1 mx a ip4:200.75.7.105/32 ip4:200.75.7.111/32 ip4:200.29.181.137/32 ip4:190.98.225.46/32 a:postman.lider.cl include:u826348.wl.sendgrid.net include:_spf.salesforce.com include:spf.qb-feedback.com ~all\"",
+            "\"google-site-verification=5_NjaJsX3yjHS2GO6PahVEy8DDu3i0gZ7fCmLRg4osA\"",
+            "\"MS=ms25698076\"",
+            "\"_globalsign-domain-verification=i_koYiRrRD7zXv4nOLmE0QakNv2Ro_R-_8wqhJGx27\"",
+            "\"_globalsign-domain-verification=RRp1NlBvRWh1nIwRgruS_GBZFOOC4CPUdfkYtv7YSp\"",
+            "\"google-site-verification=YR6yru8ZiLTJwl8nL6nqbZ9yAHUfT51JD3gotFk4UVQ\"",
+            "\"google-site-verification=C7fpGEveQyhXUNPPLveBkHHCWRYtP5zreIjIPyddbf8\"",
+            "\"_globalsign-domain-verification=Fvgvly_N7dKSW8rvjtJk7MiVQVmzVGAjmkmV08gMZH\"",
+            "\"_globalsign-domain-verification=onL6uG3TUE1uaHvY5tU7WtmGuMVtn8K1kV2CZi1map\"",
+            "\"google-site-verification=W_rDPiLawClaL7olnggbCaN5vvxHt73v4HQ-h6WxuN8\"",
+            "\"_globalsign-domain-verification=IORWc-a34GooSEI8QZmQiCVD4A8v5Fi8NastQd53b5\""
+        ]
+    }
+}
